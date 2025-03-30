@@ -1,0 +1,19 @@
+/* @import "tailwindcss"; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply Montserrat font */
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Apply Roboto font */
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Apply Boldonse font (if available) */
+.boldonse {
+    font-family: 'Boldonse', sans-serif;
+}
