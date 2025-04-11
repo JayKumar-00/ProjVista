@@ -39,7 +39,7 @@
         }
       }
       .footer-bg {
-        background: linear-gradient(135deg, #1a202c, #2d3748);
+        background: linear-gradient(135deg, #1a202c, #3f4349);
       }
     </style>
   </head>
@@ -371,40 +371,101 @@
      </section>
 
      <!-- Footer -->
-      <footer class="flex relative bg-blackgray w-full h-auto mt-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 text-center lg:text-start mx-auto mb-20">
-          <div class="flex flex-col mx-16 mt-10">
-            <img src="./images/logo.webp" alt="" width="60%">
-            <p class="font-mono text-gray font-semibold">© 2025 ProjVista, Inc. <br>
-              All rights reserved.
+     <footer class="footer-bg relative w-full py-8 mt-10 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center lg:text-left"
+        >
+          <!-- Company Info -->
+          <div class="flex flex-col items-center lg:items-start mb-4 lg:mb-0">
+            <img
+              src="./images/logo.webp"
+              alt="Logo"
+              class="h-12 sm:h-14 mb-2 "
+            />
+            <p class="font-mono text-gray-400 text-sm sm:text-base">
+              Innovating project management for global teams.
             </p>
           </div>
-          <div class="flex flex-col mt-16">
-            <ul>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Home</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">About</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Features</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Contact</li>
+
+          <!-- Navigation -->
+          <div class="flex flex-col items-center lg:items-start mb-4 lg:mb-0">
+            <h3 class="font-mono text-lg font-bold text-white mb-2">Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="font-mono text-gray-400 hover:text-blue-500"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="font-mono text-gray-400 hover:text-blue-500"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="font-mono text-gray-400 hover:text-blue-500"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
-          
-          <div class="flex flex-col mt-16">
-            <ul>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Blogs</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">FAQs</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Support</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Terms</li>
-            </ul>
-          </div>
-          <div class="flex flex-col mt-16">
-            <ul>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Overview</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Team</li>
-              <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Carriers</li>
-            </ul>
+
+          <!-- Resources & Newsletter -->
+          <div class="flex flex-col items-center lg:items-start">
+            <div class="mb-4">
+              <h3 class="font-mono text-lg font-bold mb-2">Quick Info</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="font-mono text-gray-400 hover:text-blue-500"
+                    >FAQ</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="font-mono text-gray-400 hover:text-blue-500"
+                    >Support</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <form
+                class="flex flex-col space-y-2 w-full max-w-xs mx-auto lg:mx-0"
+              >
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  class="p-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  type="submit"
+                  class="font-mono bg-blue-600 text-white py-1.5 rounded-lg hover:bg-blue-700"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </footer>
+        <div class="mt-6 pt-4 border-t border-gray-600 text-center">
+          <p class="font-mono text-gray-500 text-sm">
+            © <span id="year"></span> ProjVista, Inc. All rights reserved. |
+            <a href="#" class="text-gray-400 hover:text-gray-300"
+              >Privacy Policy</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {
