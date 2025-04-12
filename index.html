@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <!-- npx tailwindcss -i ./input.css -o ./style.css --watch -->
     <title>Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
@@ -41,372 +42,500 @@
       .footer-bg {
         background: linear-gradient(135deg, #1a202c, #3f4349);
       }
+      .button-bg {
+        background-color: rgb(38, 38, 241);
+      }
+      /* Preloader Styles */
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      #preloader img {
+        width: 150px;
+        height: auto;
+      }
+      #preloader h1 {
+        font-family: 'Boldonse', sans-serif;
+        color: #000;
+        font-size: 2.5rem;
+        margin-top: 1rem;
+      }
+      /* Welcome Page Styles */
+      #welcome-page {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9998;
+        opacity: 0;
+      }
+      #welcome-page p {
+        font-family: 'Boldonse', sans-serif;
+        color: rgb(0, 0, 0);
+        font-size: 2rem;
+        text-align: center;
+        position: relative;
+      }
+      /* Ensure main content is hidden initially */
+      .main-content {
+        opacity: 0;
+      }
     </style>
   </head>
   <body>
+
+    <!-- Header -->
+     <!-- Preloader -->
+     <div id="preloader">
+      <img src="./images/logo.webp" alt="ProjVista Logo" class="filter invert">
+      <h1>ProjVista</h1>
+    </div>
+
+    <!-- Welcome Page -->
+    <div id="welcome-page">
+      <p class="ml-2 text-2xl text-center">Welcome <br><br> Let's Get An Idea!</p>
+    </div>
     
-    <header class="relative w-full min: bg-gray lg:bg-transparent">
-      <div class="flex w-full h-24 px-6 lg:px-12 justify-between items-center">
-        <!-- Left Section: Logo -->
-        <a href="/" id="logo" class="cursor-pointer flex items-center">
-          <img 
-            src="./images/logo.webp"
-            alt="Logo"
-            class="filter invert h-14 object-scale-down"
-          />
-          <span class="ml-2 font-boldonse text-black text-xl">ProjVista</span>
-        </a>
-
-        <!-- Desktop Menu (Right-Aligned) -->
-        <ul class="hidden lg:flex space-x-8 ml-auto">
-          <li
-            class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
-          >
-            <a href="#">Home</a>
-            <div
-              class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
-            ></div>
-          </li>
-          <li
-            class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
-          >
-            <a href="#">About</a>
-            <div
-              class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
-            ></div>
-          </li>
-          <li
-            class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
-          >
-            <a href="#">Features</a>
-            <div
-              class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
-            ></div>
-          </li>
-          <li
-            class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
-          >
-            <a href="./text.html">Contact</a>
-            <div
-              class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
-            ></div>
-          </li>
-        </ul>
-
-        <!-- Login & Signup Buttons -->
-        <div class="hidden lg:flex space-x-4 ml-8">
-          <button
-            class="font-mono py-2 px-5 text-gray bg-black border-gray border rounded-xl text-base font-bold hover:bg-gray hover:text-black hover:border-black hover:border-[2.5px]"
-          >
-            <a href="login.html">Log in</a>
-          </button>
-          <button
-            class="py-2 px-5 text-black font-mono rounded-xl border-gray border-[2.5px] font-bold transition-all duration-200 hover:bg-black hover:text-white"
-          >
-            
-            <a href="SignUp.html"> Sign Up</a>
-          </button>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button
-          id="menu-toggle"
-          class="lg:hidden text-white text-2xl focus:outline-none filter invert"
-        >
-          ☰
-        </button>
-      </div>
-
-      <!-- Mobile Dropdown Menu -->
-      
-      <div
-        id="mob-menu-container"
-        class="absolute top-24 left-0 w-full bg-gray text-white overflow-hidden h-0 transition-all duration-300 lg:hidden z-10"
-      >
-        <nav id="mobile-menu" class="flex flex-col space-y-4 text-center py-6">
-          <a href="#" class="block py-2 hover:text-black">Home</a>
-          <a href="#" class="block py-2 hover:text-black">About</a>
-          <a href="#" class="block py-2 hover:text-black">Features</a>
-          <a href="#" class="block py-2 hover:text-black">Contact</a>
-          <div class="flex flex-col items-center space-y-5">
-            <button
-              class="py-2 px-5 border border-black rounded-md transition-all duration-300 hover:bg-white hover:border-black hover:text-black"
+    <div id="main-content">
+      <header class="relative w-full min: bg-gray lg:bg-transparent lg:shadow-md">
+        <div class="flex w-full h-24 px-6 lg:px-12 justify-between items-center">
+          <!-- Left Section: Logo -->
+          <a href="/" id="logo" class="cursor-pointer flex items-center">
+            <img 
+              src="./images/logo.webp"
+              alt="Logo"
+              class="filter invert h-14 object-scale-down"
+            />
+            <span class="ml-2 font-boldonse text-black text-xl">ProjVista</span>
+          </a>
+  
+          <!-- Desktop Menu (Right-Aligned) -->
+          <ul class="hidden lg:flex space-x-8 ml-auto">
+            <li
+              class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
             >
-              
+              <a href="index.html">Home</a>
+              <div
+                class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
+              ></div>
+            </li>
+            <li
+              class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
+            >
+              <a href="./about.html">About</a>
+              <div
+                class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
+              ></div>
+            </li>
+            <li
+              class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
+            >
+              <a href="./features.html">Features</a>
+              <div
+                class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
+              ></div>
+            </li>
+            <li
+              class="text-gray font-mono text-2xl py-2 hover:text-gray hover:font-bold cursor-pointer transition-all duration-200 relative group"
+            >
+              <a href="./contact.html">Contact</a>
+              <div
+                class="absolute bottom-0 w-full h-1 bg-gray hidden group-hover:block transition-all duration-200"
+              ></div>
+            </li>
+          </ul>
+  
+          <!-- Login & Signup Buttons -->
+          <div class="hidden lg:flex space-x-4 ml-8">
+            <button
+              class="font-mono py-2 px-5 text-gray bg-black border-gray border rounded-xl text-base font-bold hover:bg-gray hover:text-black hover:border-black hover:border-[2.5px]"
+            >
               <a href="login.html">Log in</a>
             </button>
             <button
-              class="py-2 px-5 bg-white border border-black text-black rounded-md transition-all duration-300 hover:text-white hover:bg-black"
+              class="py-2 px-5 text-black font-mono rounded-xl border-gray border-[2.5px] font-bold transition-all duration-200 hover:bg-black hover:text-white"
             >
-            <a href="SignUp.html"> Sign Up</a>
+              
+              <a href="SignUp.html"> Sign Up</a>
             </button>
           </div>
-        </nav>
-      </div>
-    </header>
-    <!-- login page -->
-    
-
-    <!-- Home -->
-    <section class="relative lg:z-0 px-6 sm:px-12">
-      <div
-        class="flex flex-col lg:flex-row items-center mx-auto max-w-[1400px] mt-10"
-      >
-        <!-- Left Content -->
-        <div class="w-full lg:w-1/2 text-center lg:text-left lg:-mt-32">
-          <h1
-            class="font-mono text-gray mt-20 text-lg sm:text-xl lg:text-2xl lg:leading-10 xl:leading-10 font-[500]"
+  
+          <!-- Mobile Menu Button -->
+          <button
+            id="menu-toggle"
+            class="lg:hidden text-white text-2xl focus:outline-none filter invert"
           >
-            Welcome to our Project Management Platform
-          </h1>
-          <h2
-            class="font-mono text-black mt-4 py-2 leading-tight sm:leading-[4rem] lg:leading-[5rem] text-4xl sm:text-5xl lg:text-6xl xl:text-7xl xl:leading-tight font-bold"
-          >
-            Streamline <br class="hidden sm:block" />
-            Your Project
-          </h2>
-          <div
-            class="w-full flex justify-center md:justify-center lg:justify-start lg:leading-10"
-          >
-            <p
-              class="font-mono text-gray mt-4 font-semibold text-base sm:text-lg lg:text-xl max-w-[600px]"
+            ☰
+          </button>
+        </div>
+  
+        <!-- Mobile Dropdown Menu -->
+        
+        <div
+          id="mob-menu-container"
+          class="absolute top-24 left-0 w-full bg-gray text-white overflow-hidden h-auto transition-all duration-300 lg:hidden z-10"
+        >
+          <nav id="mobile-menu" class="flex flex-col space-y-4 text-center py-6">
+            <a href="index.html" class="block py-2 hover:text-black">Home</a>
+            <a href="about.html" class="block py-2 hover:text-black">About</a>
+            <a href="features.html" class="block py-2 hover:text-black">Features</a>
+            <a href="contact.html" class="block py-2 hover:text-black">Contact</a>
+            <div class="flex flex-col items-center space-y-5">
+              <button
+                class="py-2 px-5 border border-black rounded-md transition-all duration-300 hover:bg-white hover:border-black hover:text-black"
+              >
+                
+                <a href="login.html">Log in</a>
+              </button>
+              <button
+                class="py-2 px-5 bg-white border border-black text-black rounded-md transition-all duration-300 hover:text-white hover:bg-black"
+              >
+              <a href="SignUp.html"> Sign Up</a>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- login page -->
+      
+  
+      <!-- Home -->
+      <section class="relative lg:z-0 px-6 sm:px-12">
+        <div
+          class="flex flex-col lg:flex-row items-center mx-auto max-w-[1400px] mt-10"
+        >
+          <!-- Left Content -->
+          <div class="w-full lg:w-1/2 text-center lg:text-left lg:-mt-32">
+            <h1
+              class="font-mono text-gray mt-20 text-lg sm:text-xl lg:text-2xl lg:leading-10 xl:leading-10 font-[500]"
             >
-              Discover our powerful project management system designed to help
-              you effortlessly manage your projects.
+              Welcome to our Project Management Platform
+            </h1>
+            <h2
+              class="font-mono text-black mt-4 py-2 leading-tight sm:leading-[4rem] lg:leading-[5rem] text-4xl sm:text-5xl lg:text-6xl xl:text-7xl xl:leading-tight font-bold"
+            >
+              Streamline <br class="hidden sm:block" />
+              Your Project
+            </h2>
+            <div
+              class="w-full flex justify-center md:justify-center lg:justify-start lg:leading-10"
+            >
+              <p
+                class="font-mono text-gray mt-4 font-semibold text-base sm:text-lg lg:text-xl max-w-[600px]"
+              >
+                Discover our powerful project management system designed to help
+                you effortlessly manage your projects.
+              </p>
+            </div>
+  
+            <div
+              class="mt-9 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-7 items-center sm:justify-center lg:items-start lg:justify-start"
+            >
+              <button
+                class="font-mono text-gray bg-black px-6 py-2 text-lg transition-all duration-300 border-gray border rounded-xl font-bold hover:bg-gray hover:text-black hover:border-black hover:border-[2.5px]"
+              >
+                 <a href="upload.html">Get Started</a>
+              </button>
+              <button
+                class="font-mono text-black border-gray rounded-xl border-[2.5px] font-semibold px-6 py-2 text-lg transition-all duration-300 hover:bg-black hover:text-gray hover:border-[2.5px]"
+              >
+                <a href="./features.html">Learn More</a>
+              </button>
+            </div>
+          </div>
+  
+          <!-- Right Image -->
+          <div
+            class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-12"
+          >
+            <img
+              src="./images/monitor.webp"
+              alt="Monitor"
+              class="w-[90%] max-w-[500px] lg:max-w-[550px] xl:max-w-[600px] h-auto object-contain"
+            />
+          </div>
+        </div>
+      </section>
+  
+      <!-- Home-Bottom -->
+      <section class="relative flex flex-col">
+        <!-- Marquee logo -->
+        <div class="flex flex-row relative mx-16">
+          <div
+            class="relative flex flex-row overflow-hidden h-16 mx-auto mt-32 w-[800px]"
+          >
+            <!-- Left Gradient -->
+            <div
+              style="background: linear-gradient(90deg, #f4f8ff, #fff0)"
+              class="absolute w-20 h-16 left-0 z-50 opacity-90"
+            ></div>
+  
+            <!-- Images -->
+            <div class="company">
+              <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
+              <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
+            </div>
+  
+            <!-- Right Gradient -->
+            <div
+              style="background: linear-gradient(270deg, #f4f8ff, #fff0)"
+              class="absolute w-20 h-16 right-0 translate-x-[0px] z-50 opacity-90 pointer-events-none"
+            ></div>
+          </div>
+        </div>
+  
+        <!--  Upper part -->
+        <div class="flex flex-col items-center text-center space-y-8 md:space-y-0 md:space-x-8 md:flex-row 
+        relative mx-8 md:mx-16 h-auto mt-20 lg:px-7">
+          <div class="flex flex-col sm:items-center md:items-start">
+            <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Explore Our</h1>
+            <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Seamlessly upload and download project files</p>
+          </div>
+          <div class="flex flex-col sm:items-center">
+            <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Collaborate</h1>
+            <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Empower your team to work together efficiently</p>
+          </div>
+          <div class="flex flex-col sm:items-center">
+            <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Ease Access</h1>
+            <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Centralize all your project assets in one secure location</p>
+          </div>
+          <div class="flex flex-col sm:items-center">
+            <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Analyze Progress</h1>
+            <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Gain valuable insights into your project's performance</p>
+          </div>
+        </div>
+  
+        <!-- Guitar-String -->
+  
+        <div id="string" class=" flex w-1/2 h-52 filter invert items-center text-center mx-auto mt-28">
+          <svg width="1000" height="200">
+              <path d="M 10 100 Q 500 100 990 100" stroke="white" fill="transparent"/>
+            </svg>          
+      </div>
+      
+        <!-- Intuitive Platform -->
+        <div class="relative flex flex-col mt-40 sm:mt-40 md:mt-40 lg:mt-24">
+          <h1 class="font-mono text-blackgray mx-auto text-5xl font-bold text-center">Effortless <br>Project</h1>
+          <p class="font-mono text-gray font-semibold text-center mt-5">Our intuitive & user-friendly platform simplifies <br> project management</p>
+      
+          <!-- Two Content -->
+          <div class="flex flex-col space-y-10 lg:flex-row items-center text-center mx-8 md:mx-16 mt-10">
+            <!-- Content Part -->
+            <div class="flex flex-col left-auto mx-5 md:mx-10 text-center md:text-left">
+              <h1 class="font-mono text-blackgray font-bold text-3xl">Unlock Your Project's</h1>
+              <p class="font-mono text-darkgray text-lg font-semibold mt-5">Centralize all your project assets, from source code to documents</p>
+              <p class="font-mono text-gray font-semibold w-full mt-3">Explore Our Solutions. Experience the power of our comprehensive project management solution, designed to streamline your workflow and centralize your project assets.</p>
+            </div>
+            <!-- Image Part -->
+            <div class="flex relative w-full lg:w-[50%] items-center justify-center">
+              <img src="./images/dot1.webp" alt="" class="hidden md:block absolute left-5 top-5">
+              <img src="./images/dot2.webp" alt="" class="hidden md:block absolute right-5 top-10">
+              <img src="./images/mob.webp" alt="" class="w-[70%] h-[80%]">
+              <img src="./images/dot3.webp" alt="" class="hidden md:block absolute bottom-5 right-5">
+            </div>
+          </div>
+        </div>
+      
+      </section>
+  
+      <!-- Document Section -->
+      <section class="flex flex-col mx-16 mt-10 p-6 bg-blackgray rounded-2xl shadow-md">
+        <div class="flex flex-row justify-between">
+          <h2 class="font-mono text-2xl font-bold text-gray-700 mb-4">Uploaded Documents</h2>
+          <a href="upload.html"><i class="ri-add-circle-line text-4xl left-0 filter transition-all duration-150 hover:invert"></i></a>
+        </div>
+  
+       <div id="uploaded-files" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+            <!-- Files will be displayed here dynamically -->
+        </div>
+    </section>
+  
+      <!-- Empower Team -->
+       <section class="flex flex-col w-[10/12] mx-16 mt-20">
+        <h1 class="font-mono text-blackgray text-6xl font-semibold flex mx-5 mb-12 text-center md:text-start">Empower Your Team</h1>
+        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-7">
+          <!-- box1 -->
+          <div class="flex flex-col border border-gray rounded-xl h-full mx-5 transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
+            <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
+            space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
+  
+              <img src="./images/user1.webp" alt="" width="20%" height="20%">
+              <div>
+                <h1 class="font-mono text-darkgray font-bold text-3xl">Jay Kumar</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
+              </div>
+            </div>
+            <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">Front-end Developer</h1>
+          </div>
+  
+          <!-- box2 -->
+          <div class="flex flex-col border border-gray rounded-xl mx-5 h-full transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
+            <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
+            space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
+              <img src="./images/user2.webp" alt="" width="20%" height="20%">
+              <div>
+                <h1 class="font-mono text-darkgray font-bold text-3xl">Ishana Begum</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
+              </div>
+            </div>
+            <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">Back-end Developer</h1>
+          </div>
+  
+          <!-- box3 -->
+          <div class="flex flex-col border border-gray rounded-xl mx-5 transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
+            <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
+            space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
+              <img src="./images/user3.webp" alt="" width="20%" height="20%">
+              <div>
+                <h1 class="font-mono text-darkgray font-bold text-3xl">Anjar Alam</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
+              </div>
+            </div>
+            <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">UI/UX Designer</h1>
+          </div>
+          <!-- box4 -->
+          <div class="flex flex-col border border-gray rounded-xl mx-5 transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
+            <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
+            space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
+              <img src="./images/user4.webp" alt="" width="20%" height="20%">
+              <div>
+                <h1 class="font-mono text-darkgray font-bold text-3xl">Deepak Tandan</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
+                <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
+              </div>
+            </div>
+            <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">Drive WorkFlow</h1>
+          </div>
+          
+          </div>
+       </section>
+  
+       <!-- Footer -->
+      <footer class="footer-bg relative w-full py-8 mt-10 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center lg:text-left"
+          >
+            <!-- Company Info -->
+            <div class="flex flex-col items-center lg:items-start mb-4 lg:mb-0">
+              <img
+                src="./images/logo.webp"
+                alt="Logo"
+                class="h-12 sm:h-14 mb-2 "
+              />
+              <p class="font-mono text-gray-400 text-sm sm:text-base">
+                Innovating project management for global teams.
+              </p>
+            </div>
+  
+            <!-- Navigation -->
+            <div class="flex flex-col items-center lg:items-start mb-4 lg:mb-0">
+              <h3 class="font-mono text-lg font-bold text-white mb-2">Links</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="index.html"
+                    class="font-mono text-gray-400 hover:text-blue-500"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="about.html"
+                    class="font-mono text-gray-400 hover:text-blue-500"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="contact.html"
+                    class="font-mono text-gray-400 hover:text-blue-500"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+  
+            <!-- Resources & Newsletter -->
+            <div class="flex flex-col items-center lg:items-start">
+              <div class="mb-4">
+                <h3 class="font-mono text-lg font-bold mb-2">Quick Info</h3>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="https://chatgpt.com"
+                      class="font-mono text-gray-400 hover:text-blue-500"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="./contact.html"
+                      class="font-mono text-gray-400 hover:text-blue-500"
+                      >Support</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <form
+                  class="flex flex-col space-y-2 w-full max-w-xs mx-auto lg:mx-0"
+                >
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    class="p-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="submit"
+                    class="font-mono bg-blue-600 text-white py-1.5 rounded-lg hover:bg-blue-700"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-600 text-center">
+            <p class="font-mono text-gray-500 text-sm">
+              © <span id="year"></span> ProjVista, Inc. All rights reserved. |
+              <a href="#" class="text-gray-400 hover:text-gray-300"
+                >Privacy Policy</a
+              >
             </p>
           </div>
-
-          <div
-            class="mt-9 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-7 items-center sm:justify-center lg:items-start lg:justify-start"
-          >
-            <button
-              class="font-mono text-gray bg-black px-6 py-2 text-lg transition-all duration-300 border-gray border rounded-xl font-bold hover:bg-gray hover:text-black hover:border-black hover:border-[2.5px]"
-            >
-               <a href="upload.html">Get Started</a>
-            </button>
-            <button
-              class="font-mono text-black border-gray rounded-xl border-[2.5px] font-semibold px-6 py-2 text-lg transition-all duration-300 hover:bg-black hover:text-gray hover:border-[2.5px]"
-            >
-              Learn More
-            </button>
-          </div>
         </div>
-
-        <!-- Right Image -->
-        <div
-          class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-12"
-        >
-          <img
-            src="./images/monitor.webp"
-            alt="Monitor"
-            class="w-[90%] max-w-[500px] lg:max-w-[550px] xl:max-w-[600px] h-auto object-contain"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Home-Bottom -->
-    <section class="relative flex flex-col">
-      <!-- Marquee logo -->
-      <div class="flex flex-row relative mx-16">
-        <div
-          class="relative flex flex-row overflow-hidden h-16 mx-auto mt-32 w-[800px]"
-        >
-          <!-- Left Gradient -->
-          <div
-            style="background: linear-gradient(90deg, #f4f8ff, #fff0)"
-            class="absolute w-20 h-16 left-0 z-50 opacity-90"
-          ></div>
-
-          <!-- Images -->
-          <div class="company">
-            <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang1.jpg" alt="" class="relative h-16 z-10" />
-            <img src="./images/lang2.jpg" alt="" class="relative h-16 z-10" />
-          </div>
-
-          <!-- Right Gradient -->
-          <div
-            style="background: linear-gradient(270deg, #f4f8ff, #fff0)"
-            class="absolute w-20 h-16 right-0 translate-x-[0px] z-50 opacity-90 pointer-events-none"
-          ></div>
-        </div>
-      </div>
-
-      <!--  Upper part -->
-      <div class="flex flex-col items-center text-center space-y-8 md:space-y-0 md:space-x-8 md:flex-row 
-      relative mx-8 md:mx-16 h-auto mt-20 lg:px-7">
-        <div class="flex flex-col sm:items-center md:items-start">
-          <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Explore Our</h1>
-          <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Seamlessly upload and download project files</p>
-        </div>
-        <div class="flex flex-col sm:items-center">
-          <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Collaborate</h1>
-          <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Empower your team to work together efficiently</p>
-        </div>
-        <div class="flex flex-col sm:items-center">
-          <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Ease Access</h1>
-          <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Centralize all your project assets in one secure location</p>
-        </div>
-        <div class="flex flex-col sm:items-center">
-          <h1 class="font-mono text-darkgray font-semibold text-3xl text-center md:text-start">Analyze Progress</h1>
-          <p class="font-mono text-gray text-center md:text-start leading-[31px] mt-3 font-[550]">Gain valuable insights into your project's performance</p>
-        </div>
-      </div>
-
-      <!-- Guitar-String -->
-
-      <div id="string" class=" flex w-1/2 h-52 filter invert items-center text-center mx-auto mt-28">
-        <svg width="1000" height="200">
-            <path d="M 10 100 Q 500 100 990 100" stroke="white" fill="transparent"/>
-          </svg>          
+      </footer>
     </div>
-    
-      <!-- Intuitive Platform -->
-      <div class="relative flex flex-col mt-40 sm:mt-40 md:mt-40 lg:mt-24">
-        <h1 class="font-mono text-blackgray mx-auto text-5xl font-bold text-center">Effortless <br>Project</h1>
-        <p class="font-mono text-gray font-semibold text-center mt-5">Our intuitive & user-friendly platform simplifies <br> project management</p>
-    
-        <!-- Two Content -->
-        <div class="flex flex-col space-y-10 lg:flex-row items-center text-center mx-8 md:mx-16 mt-10">
-          <!-- Content Part -->
-          <div class="flex flex-col left-auto mx-5 md:mx-10 text-center md:text-left">
-            <h1 class="font-mono text-blackgray font-bold text-3xl">Unlock Your Project's</h1>
-            <p class="font-mono text-darkgray text-lg font-semibold mt-5">Centralize all your project assets, from source code to documents</p>
-            <p class="font-mono text-gray font-semibold w-full mt-3">Explore Our Solutions. Experience the power of our comprehensive project management solution, designed to streamline your workflow and centralize your project assets.</p>
-          </div>
-          <!-- Image Part -->
-          <div class="flex relative w-full lg:w-[50%] items-center justify-center">
-            <img src="./images/dot1.webp" alt="" class="hidden md:block absolute left-5 top-5">
-            <img src="./images/dot2.webp" alt="" class="hidden md:block absolute right-5 top-10">
-            <img src="./images/mob.webp" alt="" class="w-[70%] h-[80%]">
-            <img src="./images/dot3.webp" alt="" class="hidden md:block absolute bottom-5 right-5">
-          </div>
-        </div>
-      </div>
-    
-    </section>
-
-    <!-- Document Section -->
-    <section class="flex flex-col mx-16 mt-10 p-6 bg-blackgray rounded-2xl shadow-md">
-      <div class="flex flex-row justify-between">
-        <h2 class="font-mono text-2xl font-bold text-gray-700 mb-4">Uploaded Documents</h2>
-        <a href="upload.html"><i class="ri-add-circle-line text-4xl left-0 filter transition-all duration-150 hover:invert"></i></a>
-      </div>
-
-     <div id="uploaded-files" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-          <!-- Files will be displayed here dynamically -->
-      </div>
-  </section>
-
-    <!-- Empower Team -->
-     <section class="flex flex-col w-[10/12] mx-16 mt-20">
-      <h1 class="font-mono text-blackgray text-6xl font-semibold flex mx-5 mb-12 text-center md:text-start">Empower Your Team</h1>
-      <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-7">
-        <!-- box1 -->
-        <div class="flex flex-col border border-gray rounded-xl h-full mx-5 transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
-          <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
-          space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
-
-            <img src="./images/user1.webp" alt="" width="20%" height="20%">
-            <div>
-              <h1 class="font-mono text-darkgray font-bold text-3xl">Jay Kumar</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
-            </div>
-          </div>
-          <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">Front-end Developer</h1>
-        </div>
-
-        <!-- box2 -->
-        <div class="flex flex-col border border-gray rounded-xl mx-5 h-full transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
-          <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
-          space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
-            <img src="./images/user2.webp" alt="" width="20%" height="20%">
-            <div>
-              <h1 class="font-mono text-darkgray font-bold text-3xl">Ishana Begum</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
-            </div>
-          </div>
-          <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">Back-end Developer</h1>
-        </div>
-
-        <!-- box3 -->
-        <div class="flex flex-col border border-gray rounded-xl mx-5 transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
-          <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
-          space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
-            <img src="./images/user3.webp" alt="" width="20%" height="20%">
-            <div>
-              <h1 class="font-mono text-darkgray font-bold text-3xl">Anjar Alam</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
-            </div>
-          </div>
-          <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">UI/UX Designer</h1>
-        </div>
-        <!-- box4 -->
-        <div class="flex flex-col border border-gray rounded-xl mx-5 transition-all duration-200 hover:scale-105 hover:shadow-xl cursor-pointer">
-          <div class="flex flex-col items-center text-center md:flex-row sm:flex-col sm:items-center sm:text-center md:text-start m-5 mt-5 
-          space-x-3 sm:space-x-0 sm:space-y-3 md:space-x-5 lg:space-x-6">
-            <img src="./images/user4.webp" alt="" width="20%" height="20%">
-            <div>
-              <h1 class="font-mono text-darkgray font-bold text-3xl">Deepak Tandon</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">B.tech "CSE"</h1>
-              <h1 class="font-mono text-darkgray font-bold text-3xl mt-3">6th Sem </h1>
-            </div>
-          </div>
-          <h1 class="font-mono text-gray m-6 mt-1 text-center md:text-start">Drive WorkFlow</h1>
-        </div>
-        
-        </div>
-      </div>
-     </section>
-
-     <!-- Footer -->
-     <footer class="flex relative bg-blackgray w-full h-auto mt-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 text-center lg:text-start mx-auto mb-20">
-        <div class="flex flex-col mx-16 mt-10">
-          <img src="./images/logo.webp" alt="" width="60%">
-          <p class="font-mono text-gray font-semibold">© 2025 ProjVista, Inc. <br>
-            All rights reserved.
-          </p>
-        </div>
-        <div class="flex flex-col mt-16">
-          <ul>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Home</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">About</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Features</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Contact</li>
-          </ul>
-        </div>
-        
-        <div class="flex flex-col mt-16">
-          <ul>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Blogs</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">FAQs</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Support</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Terms</li>
-          </ul>
-        </div>
-        <div class="flex flex-col mt-16">
-          <ul>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Overview</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Team</li>
-            <li class="font-mono text-gray font-medium text-lg leading-[3rem]">Carriers</li>
-          </ul>
-        </div>
-      </div>
-    </footer>
 
       <script>
+        // Login Form script
         document.addEventListener("DOMContentLoaded", function () {
             const loginForm = document.getElementById("login-form");
     
@@ -423,6 +552,78 @@
                     }
                 });
             }
+        });
+
+        // Preloader and Welcome Page GSAP Animation
+        window.addEventListener('load', function() {
+          const preloader = document.getElementById('preloader');
+          const preloaderLogo = preloader.querySelector('img');
+          const preloaderTitle = preloader.querySelector('h1');
+          const welcomePage = document.getElementById('welcome-page');
+          const welcomeTitle = welcomePage.querySelector('h1');
+          const mainContent = document.querySelector('.main-content');
+
+          // GSAP Timeline for Preloader and Welcome Page
+          const tl = gsap.timeline();
+
+          // Animate Preloader Logo (Fade In and Scale)
+          tl.from(preloaderLogo, {
+            opacity: 0,
+            scale: 0.5,
+            duration: 2,
+            ease: "power2.out"
+          }, "load");
+
+          // Animate Preloader Title (Fade In and Move Up)
+          tl.from(preloaderTitle, {
+            opacity: 0,
+            y: 50,
+            duration: 2,
+            ease: "power2.out"
+          }, "load+=0.5");
+
+          // Transition to Welcome Page
+          setTimeout(() => {
+            tl.to(preloader, {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.in",
+              onComplete: () => {
+                preloader.style.display = 'none';
+              }
+            }).to(welcomePage, {
+              opacity: 1,
+              duration: 1,
+              ease: "power2.out"
+            }, "-=0.3");
+
+            // Animate Welcome Title (Same as Preloader Title)
+            tl.fromTo(welcomeTitle, {
+            opacity: 1
+        }, {
+            opacity: 0,
+            display: "none",
+            duration: 0.5,
+            delay: 1,
+            ease: "power2.in"
+        });
+
+            // Transition to Main Content
+            setTimeout(() => {
+              tl.to(welcomePage, {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.in",
+                onComplete: () => {
+                  welcomePage.style.display = 'none';
+                }
+              }).to(mainContent, {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out"
+              }, "-=0.3");
+            }, 2000);
+          },);
         });
     </script>
 
